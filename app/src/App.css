@@ -1,38 +1,102 @@
-.App {
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 3rem;
+  color: #4b4b4b;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Estilo para el contenedor de la lista de Digimons */
+.digimons-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 10 columnas por fila */
+  gap: 20px;
+  padding: 20px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Estilo para cada tarjeta de Digimon */
+.digimon-card {
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.digimon-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para las imágenes dentro de las tarjetas */
+.digimon-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Estilo para el título de cada Digimon */
+.digimon-title {
+  font-size: 1.2rem;
+  color: #333;
+  padding: 10px;
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+/* Estilo para el mensaje de "Cargando..." */
+.loading {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-top: 20px;
+}
+
+/* Estilo para cuando no hay resultados */
+.no-results {
+  font-size: 1.5rem;
+  color: #e74c3c;
+  margin-top: 20px;
+}
+
+/* Responsividad */
+@media (max-width: 1200px) {
+  .digimons-container {
+      grid-template-columns: repeat(6, 1fr); /* 6 columnas en pantallas medianas */
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 768px) {
+  h1 {
+      font-size: 2rem;
+  }
+
+  .digimons-container {
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas pequeñas */
+  }
+
+  .digimon-card {
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .digimons-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas muy pequeñas */
   }
 }
