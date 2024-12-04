@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import DigimonsList from './Home'; // Importa el componente DigimonsList
+import DigimonsList from './Home'; 
 import Search from './Search';
 import DigimonTeam from './DigimonTeam';
-import './App.css'; // Importa los estilos
+import './App.css'; 
 
 function App() {
     return (
