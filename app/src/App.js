@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import DigimonsList from './Home'; 
 import Search from './Search';
 import DigimonTeam from './DigimonTeam';
+import DigimonDetail from './DigimonDetail';
 import './App.css'; 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
                 <Route path="/" element={<DigimonsList />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/digimon-team" element={<DigimonTeam />} />
+
+                {/* Ruta al detalle del Digimon */}
+                <Route path="/digimon/:digimonId" element={<DigimonDetail />} /> 
             </Routes>
         </Router>
     );

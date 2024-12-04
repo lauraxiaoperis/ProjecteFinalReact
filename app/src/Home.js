@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import DigimonCard from './DigimonCard'; 
 import './App.css';
 
@@ -49,7 +50,7 @@ function DigimonsList() {
         if (filteredAttributeName.length > 0) {
             // Random Attribute
             const ranAttribute = filteredAttributeName[Math.floor(Math.random() * filteredAttributeName.length)];
-            console.log("Random Attribute:", ranAttribute); 
+           // console.log("Random Attribute:", ranAttribute); 
             setRandomAttribute(ranAttribute);
     
             // Realiza el fetch para obtener los Digimons basados en el atributo
@@ -74,11 +75,13 @@ function DigimonsList() {
                 {digimons.length > 0 ? (
                     // Si hay Digimons, mapeamos y mostramos las tarjetas
                     digimons.map((digimon) => (
-                        <DigimonCard
-                            key={digimon.id} 
-                            title={digimon.name} 
-                            imageUrl={digimon.image} 
-                        />
+                        <Link key={digimon.id} to={`/digimon/${digimon.id}`}>  {/*  Link para el detalle  */}
+                            <DigimonCard
+                                key={digimon.id} 
+                                title={digimon.name} 
+                                imageUrl={digimon.image} 
+                            />
+                        </Link>
                     ))
                 ) : (
                     <p>No se encontraron Digimons</p> // Si no se encuentran Digimons
