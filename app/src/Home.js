@@ -93,11 +93,13 @@ function DigimonsList() {
             <div className="digimons-container">
             {filteredDigimons.length > 0 ? (
                     filteredDigimons.map((digimon) => (
-                        <DigimonCard
-                            key={digimon.id} 
-                            title={digimon.name} 
-                            imageUrl={digimon.image} 
-                        />
+                        <Link key={digimon.id} to={`/digimon/${digimon.id}`}>  {/*  Link para el detalle  */}
+                            <DigimonCard
+                                key={digimon.id} 
+                                title={digimon.name} 
+                                imageUrl={digimon.image} 
+                            />
+                        </Link>
                     ))
                 ) : (
                     <p>There are no Digimons with this attribute.</p> 
