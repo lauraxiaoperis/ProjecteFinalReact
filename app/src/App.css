@@ -1,21 +1,47 @@
-/* Estilos generales */
-body {
-  font-family: 'Arial', sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  text-align: center;
+  box-sizing: border-box;
+}
+/*=========== Nav ===========*/
+nav {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background-color: #282c34; 
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  padding-right: 5%;
+  text-align: right;
+  color: white; 
 }
 
-h1 {
-  font-size: 3rem;
-  color: #4b4b4b;
-  margin-top: 20px;
+nav ul {
+  list-style-type: none; 
+  padding: 0;
+}
+
+nav ul li {
+  display: inline; 
+  margin: 0 1%; 
+}
+
+nav ul li a {
+  color: white; /* Color del texto */
+  text-decoration: none; /* Elimina el subrayado */
+  font-size: 18px; /* Tamaño de la fuente */
   font-weight: bold;
+  transition: color 0.3s ease; /* Transición para efectos de hover */
+}
+
+/* Efecto hover para los links */
+nav ul li a:hover {
+  color: #f39c12; /* Color dorado al pasar el mouse */
+}
+
+/*======================= Page Content =======================*/
+.page-content{
+  padding-top: 10vh;
 }
 
 /* Estilo para el contenedor de la lista de Digimons */

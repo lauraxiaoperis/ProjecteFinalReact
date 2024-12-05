@@ -23,15 +23,17 @@ function App() {
                     </li>
                 </ul>
             </nav>
-            <Routes>
-                
-                <Route path="/" element={<DigimonProvider><DigimonsList /></DigimonProvider>} />
-                <Route path="/search" element={<DigimonProvider><Search /></DigimonProvider>} />
-                <Route path="/digimon-team" element={<DigimonTeam />} />
+            <div className='page-content'>
+                <Routes>
+                    
+                    <Route path="/" element={<DigimonProvider><DigimonsList /></DigimonProvider>} />
+                    <Route path="/search" element={<DigimonProvider><Search /></DigimonProvider>} />
+                    <Route path="/digimon-team" element={<DigimonTeam />} />
 
-                {/* Ruta al detalle del Digimon */}
-                <Route path="/digimon/:digimonId" element={<DigimonDetail />} /> 
-            </Routes>
+                    {/* Ruta al detalle del Digimon */}
+                    <Route path="/digimon/:digimonId" element={<DigimonDetail />} /> 
+                </Routes>
+            </div>
         </Router>
     );
 }
