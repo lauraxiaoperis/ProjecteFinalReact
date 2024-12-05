@@ -14,12 +14,19 @@ header{
   background-color: #282c34; 
   align-items: center;
 }
+
+/*-- Logo --*/
 #digimon-logo{
   width: 20%;
 }
 #digimon-logo img{
   width: 30%;
 }
+#digimon-logo img:hover {
+  transform: scale(1.1);  
+}
+
+/*-- Nav --*/
 nav {
   width: 80%;
   text-align: right;
@@ -42,7 +49,7 @@ nav ul li a:hover {
   color: #f39c12; 
 }
 
-/*======================= Page Content =======================*/
+/*=========== Page Content ===========*/
 .page-content{
   padding-top: 14vh;
 }

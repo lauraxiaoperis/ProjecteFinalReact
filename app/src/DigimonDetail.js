@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import DigimonCard from './DigimonCard'; 
 
 function DigimonDetail(){
     const [digimonDetail, setDigimonDetail] = useState([]); // Estado para almacenar el Detalle del Digimon
