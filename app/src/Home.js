@@ -6,7 +6,6 @@ import './App.css';
 
 function DigimonsList() {
     const [digimons, setDigimons] = useState([]); // Estado para almacenar todos los Digimons
-  //  const [filteredAttributeName, setFilteredAttributeName] = useState([]); //Array con los tipos de atributos que hay
     const [randomAttribute, setRandomAttribute] = useState(''); // Atributo aleatorio
     const [filteredDigimons, setFilteredDigimons] = useState([]); // Estado para almacenar los Digimons filtrados por atributo
 
@@ -31,22 +30,6 @@ function DigimonsList() {
                 console.error('Error fetching Digimons:', error);
             });
     }, []); 
-
-   /* // =============== Fetch - Digimon Attribute  =============== 
-    useEffect(() => {
-        fetch(apiUrls.attribute)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.content && data.content.fields) {
-                    // Obtener los nombres de los atributos
-                    const attributeNames = data.content.fields.map(field => field.name);
-                    setFilteredAttributeName(attributeNames);
-                }
-            })
-            .catch((error) => {
-                console.error('Error fetching Digimons attributes:', error);
-            });
-    }, []); */
     
     // =============== Fetch - Digimon List - Random Attribute  =============== 
     useEffect(() => {
