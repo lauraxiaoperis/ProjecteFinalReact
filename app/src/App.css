@@ -1,47 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Mulish&family=Noto+Sans:wght@300;400&family=Nunito+Sans:opsz@6..12&family=Open+Sans&family=Poppins:wght@100;200;300;800&family=Raleway&family=Roboto+Condensed&family=Roboto+Slab:wght@900&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/*=========== Nav ===========*/
-nav {
+/*=========== Header ===========*/
+header{
+  display: flex;
   position: fixed;
   width: 100%;
   z-index: 1000;
+  padding: 2vh 4%;
   background-color: #282c34; 
-  padding-top: 3vh;
-  padding-bottom: 3vh;
-  padding-right: 5%;
-  text-align: right;
-  color: white; 
+  align-items: center;
 }
-
-nav ul {
-  list-style-type: none; 
-  padding: 0;
+#digimon-logo{
+  width: 20%;
+}
+#digimon-logo img{
+  width: 30%;
+}
+nav {
+  width: 80%;
+  text-align: right;
 }
 
 nav ul li {
+  font-family: 'Doto';
   display: inline; 
   margin: 0 1%; 
 }
 
 nav ul li a {
-  color: white; /* Color del texto */
-  text-decoration: none; /* Elimina el subrayado */
-  font-size: 18px; /* Tamaño de la fuente */
+  color: white; 
+  text-decoration: none; 
   font-weight: bold;
-  transition: color 0.3s ease; /* Transición para efectos de hover */
+  transition: color 0.3s ease; 
 }
 
-/* Efecto hover para los links */
 nav ul li a:hover {
-  color: #f39c12; /* Color dorado al pasar el mouse */
+  color: #f39c12; 
 }
 
 /*======================= Page Content =======================*/
 .page-content{
-  padding-top: 10vh;
+  padding-top: 14vh;
 }
 
 /* Estilo para el contenedor de la lista de Digimons */

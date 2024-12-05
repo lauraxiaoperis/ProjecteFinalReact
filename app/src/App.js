@@ -6,23 +6,26 @@ import DigimonTeam from './DigimonTeam';
 import DigimonDetail from './DigimonDetail';
 import { DigimonProvider } from './DigimonContext';
 import './App.css'; 
+import logo from './images/logo_digimon.png';
 
 function App() {
     return (
         <Router>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/search">Search Digimon</Link>
-                    </li>
-                    <li>
-                        <Link to="/digimon-team">Digimon Team</Link>
-                    </li>
-                </ul>
-            </nav>
+            <header>
+                <div id='digimon-logo'>
+                    <Link to="/"><img src={logo} alt="Digimon logo"/></Link>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/search">Search Digimon</Link>
+                        </li>
+                        <li>
+                            <Link to="/digimon-team">Digimon Team</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
             <div className='page-content'>
                 <Routes>
                     
