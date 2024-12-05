@@ -29,6 +29,9 @@ function DigimonDetail(){
             {digimonDetail ? (
                 <div>
                     <h3>{digimonDetail.name}</h3>
+                    {digimonDetail.descriptions?.[1] && (
+                        <p>{digimonDetail.descriptions[1].description}</p>
+                    )}
                     {digimonDetail.images?.[0] && ( //? comprova si existeix el primer element de images
                         <img
                             src={digimonDetail.images[0].href}
@@ -54,6 +57,16 @@ function DigimonDetail(){
                                         alt={item.field}
                                     />
                                     <span>{item.field}</span>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {digimonDetail.skills?.[0] && (
+                        <div>
+                            <p>skills:</p>
+                            {digimonDetail.skills.map((item, index) => (
+                                <div key={index}>
+                                    <p><strong>{item.skill}</strong> : {item.description}</p>
                                 </div>
                             ))}
                         </div>
