@@ -4,6 +4,7 @@ import DigimonsList from './Home';
 import Search from './Search';
 import DigimonTeam from './DigimonTeam';
 import DigimonDetail from './DigimonDetail';
+import { DigimonProvider } from './DigimonContext';
 import './App.css'; 
 
 function App() {
@@ -23,8 +24,9 @@ function App() {
                 </ul>
             </nav>
             <Routes>
-                <Route path="/" element={<DigimonsList />} />
-                <Route path="/search" element={<Search />} />
+                
+                <Route path="/" element={<DigimonProvider><DigimonsList /></DigimonProvider>} />
+                <Route path="/search" element={<DigimonProvider><Search /></DigimonProvider>} />
                 <Route path="/digimon-team" element={<DigimonTeam />} />
 
                 {/* Ruta al detalle del Digimon */}

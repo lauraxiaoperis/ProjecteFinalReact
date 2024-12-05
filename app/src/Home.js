@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import DigimonCard from './DigimonCard'; 
+import DigimonContext from './DigimonContext';  // Importamos el contexto
 import './App.css';
 
 function DigimonsList() {
     const [digimons, setDigimons] = useState([]); // Estado para almacenar todos los Digimons
-    const [filteredAttributeName, setFilteredAttributeName] = useState([]); //Array con los tipos de atributos que hay
+  //  const [filteredAttributeName, setFilteredAttributeName] = useState([]); //Array con los tipos de atributos que hay
     const [randomAttribute, setRandomAttribute] = useState(''); // Atributo aleatorio
     const [filteredDigimons, setFilteredDigimons] = useState([]); // Estado para almacenar los Digimons filtrados por atributo
+
+    const { filteredAttributeName } = useContext(DigimonContext); // Accedemos al contexto solo para los atributos
 
     const numberDigimons = 20;
     // APIs URL
@@ -29,7 +32,7 @@ function DigimonsList() {
             });
     }, []); 
 
-    // =============== Fetch - Digimon Attribute  =============== 
+   /* // =============== Fetch - Digimon Attribute  =============== 
     useEffect(() => {
         fetch(apiUrls.attribute)
             .then((response) => response.json())
@@ -43,7 +46,7 @@ function DigimonsList() {
             .catch((error) => {
                 console.error('Error fetching Digimons attributes:', error);
             });
-    }, []); 
+    }, []); */
     
     // =============== Fetch - Digimon List - Random Attribute  =============== 
     useEffect(() => {
