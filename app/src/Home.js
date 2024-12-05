@@ -12,16 +12,11 @@ function DigimonsList() {
     const { filteredAttributeName } = useContext(DigimonContext); // Accedemos al contexto solo para los atributos
 
     const numberDigimons = 20;
-    // APIs URL
-    const apiUrls = {
-        digimons: `https://digi-api.com/api/v1/digimon?pageSize=${numberDigimons}`,
-        attribute: 'https://digi-api.com/api/v1/attribute',
-    };
     
     // =============== Fetch - General - Digimon List =============== 
     useEffect(() => {
         // Solicitar Digimons generales
-        fetch(apiUrls.digimons)
+        fetch(`https://digi-api.com/api/v1/digimon?pageSize=${numberDigimons}`)
             .then((response) => response.json())
             .then((data) => {
                 setDigimons(data.content || []);
