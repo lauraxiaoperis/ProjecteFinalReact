@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'; 
+import { Link } from 'react-router-dom';
 import DigimonCard from './DigimonCard'; // Import the component to display Digimon cards
 import DigimonContext from './DigimonContext'; // Import the context containing the list of attributes
 import './App.css';
@@ -55,6 +56,7 @@ function Search() {
       .then((response) => response.json())
       .then((data) => {
         setDigimons(data.content || []); // Save the list of Digimons
+       // console.log(`https://digi-api.com/api/v1/digimon?${queryString}`);
       })
       .catch((error) => console.error('Error fetching Digimons:', error));
   };
@@ -137,11 +139,13 @@ function Search() {
         {digimons.length > 0 ? (
           // If there are Digimons in the "digimons" state, display them using the DigimonCard component
           digimons.map((digimon) => (
-            <DigimonCard
-              key={digimon.id}
-              title={digimon.name}
-              imageUrl={digimon.image}
-            />
+            <Link key={digimon.id} to={`/digimon/${digimon.id}`}>  {/*  Link para el detalle  */}
+              <DigimonCard
+                key={digimon.id}
+                title={digimon.name}
+                imageUrl={digimon.image}
+              />
+            </Link>
           ))
         ) : (
           <p>No Digimons found with the selected filters.</p>
