@@ -54,6 +54,17 @@ nav ul li a:hover {
   padding-top: 14vh;
 }
 
+/*=========== Footer ===========*/
+footer{
+  background-color: #282c34; 
+  padding: 2vh 4%;
+}
+
+footer img{
+  height: 3vh;
+  padding-right: 1%;
+}
+
 /* Estilo para el contenedor de la lista de Digimons */
 .digimons-container {
   display: grid;

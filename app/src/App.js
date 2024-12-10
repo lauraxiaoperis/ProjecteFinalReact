@@ -7,6 +7,9 @@ import DigimonDetail from './DigimonDetail';
 import { DigimonProvider } from './DigimonContext';
 import './App.css'; 
 import logo from './images/logo_digimon.png';
+import logo_ig from './images/logo_instagram.png';
+import logo_tw from './images/logo_twitter.png';
+import logo_y from './images/logo_youtube.png';
 
 function App() {
     return (
@@ -37,6 +40,12 @@ function App() {
                     <Route path="/digimon/:digimonId" element={<DigimonDetail />} /> 
                 </Routes>
             </div>
+            
+            <footer>
+                <a href='https://www.instagram.com/digimonoficial?igsh=MWpmaXg3Zm0wM3V6ZQ==' target='_blank' alt="Digimon Istagram"><img src={logo_ig} alt="Digimon Istagram"></img></a>
+                <a href='https://x.com/digimonworldesp?lang=ca' target='_blank' alt="Digimon Twitter"><img src={logo_tw}></img></a>
+                <a href='https://www.youtube.com/@DIGIMONofficialJP' target='_blank' alt="Digimon YouTube"><img src={logo_y}></img></a>
+            </footer>
         </Router>
     );
 }
