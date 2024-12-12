@@ -59,7 +59,7 @@ function DigimonDetail(){
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div id='field-ext'>
                         {digimonDetail.fields?.length > 0 && (
                             <div className='digimon-detail-fields'>
                                 <p id="field">FIELDS</p>
@@ -69,7 +69,7 @@ function DigimonDetail(){
                                             <img
                                                 src={item.image}
                                                 alt={item.field}
-                                            /><br></br>
+                                            /><br></br><br></br>
                                             <span>{item.field}</span>
                                         </div>
                                     ))}
@@ -77,19 +77,21 @@ function DigimonDetail(){
                             </div>
                         )}
                     </div>
-                    <div className='digimon-detail-fields'>
+                    <div className='digimon-skills-fields'>
                         {digimonDetail.skills?.[0] && (
                             <div>
-                                <p>skills:</p>
+                                <p className='skills-title'>SKILLS</p>
+                                <div className='skills-group'>
                                 {digimonDetail.skills.map((item, index) => (
-                                    <div key={index}>
-                                        <p><strong>{item.skill}</strong> : {item.description}</p>
+                                    <div className='detail-skills' key={index}>
+                                        <p><span className='title'>{item.skill}</span><br></br><br></br> {item.description}</p>
                                     </div>
                                 ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
-                    )}
                 </div>
-            </div>
             ) : (
                 <p>There are no Details in this Digimon.</p> 
             )}

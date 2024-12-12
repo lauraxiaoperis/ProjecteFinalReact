@@ -3,15 +3,14 @@
     color: white;
 }
 #digimon-detail{
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 .digimon-detail-image{
-    width: 25%;
+    width: 20%;
     margin-right: 5%;
+    margin-left: 5%;
 }
 .digimon-detail-image img{
     width: 100%;
@@ -19,7 +18,8 @@
     border-radius: 10px !important;
 }
 .digimon-detail-info{
-    width: 70%;
+    width: 65%;
+    margin-right: 5%;
     align-content: center;
 }
 h3{
@@ -51,17 +51,66 @@ h3{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+    background-color: #112244;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
-#field{
+.skills-title, #field{
     font-size: 1.5em;
     color: white;
     font-weight: 600;
     font-style: italic;
+}
+#field{
     width: 100%;
+    text-align: center;
+    padding-bottom: 5vh;
+    font-size: 2em;
 }
 .field-items{
     width: 100%;
 }
+.field-items img{
+    height: 5vh;
+}
+.field-items span{
+    color: #d3d3d3;
+}
 #field-group{
     display: flex;
+    width: 100%;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+#field-ext{
+    width: 100%;
+}
+.digimon-skills-fields{
+    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.skills-group{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 3%;
+}
+.skills-title{
+    width: 100%;
+    padding-left: 3%;
+    font-size: 2em;
+    padding-bottom: 2vh;
+}
+.detail-skills{
+    border: 2px solid #c8aa6e; 
+    padding: 8px;
+    width: 15%;
+    margin-right: 1%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }

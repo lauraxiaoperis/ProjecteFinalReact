@@ -21,10 +21,10 @@ function App() {
                 <nav>
                     <ul>
                         <li>
-                            <Link to="/search">Search Digimon</Link>
+                            <Link to="/search">SEARCH DIGIMON</Link>
                         </li>
                         <li>
-                            <Link to="/digimon-team">Digimon Team</Link>
+                            <Link to="/digimon-team">DIGIMON TEAM</Link>
                         </li>
                     </ul>
                 </nav>
