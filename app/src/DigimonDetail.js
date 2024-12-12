@@ -59,19 +59,21 @@ function DigimonDetail(){
                             </div>
                         </div>
                     </div>
-                    <div className='digimon-detail-fields'>
+                    <div>
                         {digimonDetail.fields?.length > 0 && (
-                            <div>
+                            <div className='digimon-detail-fields'>
                                 <p id="field">FIELDS</p>
-                                {digimonDetail.fields.map((item, index) => (
-                                    <div class="field-items" key={index}>
-                                        <img
-                                            src={item.image}
-                                            alt={item.field}
-                                        />
-                                        <span>{item.field}</span>
-                                    </div>
-                                ))}
+                                <div id='field-group'>
+                                    {digimonDetail.fields.map((item, index) => (
+                                        <div class="field-items" key={index}>
+                                            <img
+                                                src={item.image}
+                                                alt={item.field}
+                                            /><br></br>
+                                            <span>{item.field}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         )}
                     </div>

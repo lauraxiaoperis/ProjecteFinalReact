@@ -20,6 +20,7 @@
 }
 .digimon-detail-info{
     width: 70%;
+    align-content: center;
 }
 h3{
     font-size: 2.8em;
@@ -31,7 +32,7 @@ h3{
     padding-bottom: 2vh;
 }
 .detail-square{
-    border: 3px solid #c8aa6e; 
+    border: 2px solid #c8aa6e; 
     padding: 8px;
     width: 15%;
     margin-right: 2%;
@@ -56,7 +57,11 @@ h3{
     color: white;
     font-weight: 600;
     font-style: italic;
+    width: 100%;
 }
 .field-items{
     width: 100%;
+}
+#field-group{
+    display: flex;
 }
