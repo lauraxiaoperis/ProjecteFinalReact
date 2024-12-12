@@ -41,15 +41,23 @@ function DigimonDetail(){
                         {digimonDetail.descriptions?.[1] && (
                             <p id="description">{digimonDetail.descriptions[1].description}</p>
                         )}
-                        {digimonDetail.levels?.[0] && (
-                            <p>Level: {digimonDetail.levels[0].level}</p>
-                        )}
-                        {digimonDetail.types?.[0] && (
-                            <p>Type: {digimonDetail.types[0].type}</p>
-                        )}
-                        {digimonDetail.attributes?.length > 0 && (
-                            <p>Attributes: {digimonDetail.attributes.map(attribute => attribute.attribute).join(', ')}</p> 
-                        )}
+                        <div id="attri">
+                            <div className='detail-square'>
+                                {digimonDetail.levels?.[0] && (
+                                    <p>LEVEL<br></br> {digimonDetail.levels[0].level}</p>
+                                )}
+                            </div>
+                            <div className='detail-square'>
+                                {digimonDetail.types?.[0] && (
+                                    <p>TYPE<br></br>{digimonDetail.types[0].type}</p>
+                                )}
+                            </div>
+                            <div className='detail-square'>
+                            {digimonDetail.attributes?.length > 0 && (
+                                <p>ATTRIBUTES<br></br>{digimonDetail.attributes.map(attribute => attribute.attribute).join(', ')}</p> 
+                            )}
+                            </div>
+                        </div>
                         {digimonDetail.fields?.length > 0 && (
                             <div>
                                 <p>Field:</p>
