@@ -44,25 +44,27 @@ function DigimonDetail(){
                         <div id="attri">
                             <div className='detail-square'>
                                 {digimonDetail.levels?.[0] && (
-                                    <p>LEVEL<br></br> {digimonDetail.levels[0].level}</p>
+                                    <p><span className='title'>LEVEL</span><br></br> {digimonDetail.levels[0].level}</p>
                                 )}
                             </div>
                             <div className='detail-square'>
                                 {digimonDetail.types?.[0] && (
-                                    <p>TYPE<br></br>{digimonDetail.types[0].type}</p>
+                                    <p><span className='title'>TYPE</span><br></br>{digimonDetail.types[0].type}</p>
                                 )}
                             </div>
                             <div className='detail-square'>
                             {digimonDetail.attributes?.length > 0 && (
-                                <p>ATTRIBUTES<br></br>{digimonDetail.attributes.map(attribute => attribute.attribute).join(', ')}</p> 
+                                <p><span className='title'>ATTRIBUTES</span><br></br>{digimonDetail.attributes.map(attribute => attribute.attribute).join(', ')}</p> 
                             )}
                             </div>
                         </div>
+                    </div>
+                    <div className='digimon-detail-fields'>
                         {digimonDetail.fields?.length > 0 && (
                             <div>
-                                <p>Field:</p>
+                                <p id="field">FIELDS</p>
                                 {digimonDetail.fields.map((item, index) => (
-                                    <div key={index}>
+                                    <div class="field-items" key={index}>
                                         <img
                                             src={item.image}
                                             alt={item.field}
@@ -72,6 +74,8 @@ function DigimonDetail(){
                                 ))}
                             </div>
                         )}
+                    </div>
+                    <div className='digimon-detail-fields'>
                         {digimonDetail.skills?.[0] && (
                             <div>
                                 <p>skills:</p>
