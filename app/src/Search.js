@@ -10,28 +10,11 @@ function Search() {
   const [selectedAttribute, setSelectedAttribute] = useState(''); // Stores the selected attribute
   const [xAntibody, setXAntibody] = useState(false); // Stores the checkbox state (true or false)
   const [selectedLevel, setSelectedLevel] = useState(''); // Stores the selected level
-  const [levels, setLevels] = useState([]); // Stores the available levels
   
-  const { filteredAttributeName } = useContext(DigimonContext); // List of attributes obtained from the context
+   // Use context to get both attributes and levels
+   const { filteredAttributeName, levels } = useContext(DigimonContext);
 
   const numberDigimons = 20;
-
-  // This useEffect executes when the component loads and fetches the available levels
-  useEffect(() => {
-    fetch('https://digi-api.com/api/v1/level')
-      .then((response) => response.json())
-      .then((data) => {
-        // If the API returns valid data
-        if (data.content && data.content.fields) {
-          // Extract levels from the "fields" array
-          const levelNames = data.content.fields.map((field) => field.name);
-          // Save the levels in the state
-          setLevels(levelNames); 
-        }
-      })
-      .catch((error) => console.error('Error fetching levels:', error));
-  }, []);
-
   // Function to handle search
   const handleSearch = () => {
 
