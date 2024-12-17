@@ -34,7 +34,7 @@ function App() {
                     
                     <Route path="/" element={<DigimonProvider><DigimonsList /></DigimonProvider>} />
                     <Route path="/search" element={<DigimonProvider><Search /></DigimonProvider>} />
-                    <Route path="/digimon-team" element={<DigimonTeam />} />
+                    <Route path="/digimon-team" element={<DigimonProvider><DigimonTeam /></DigimonProvider>} />
 
                     {/* Ruta al detalle del Digimon */}
                     <Route path="/digimon/:digimonId" element={<DigimonDetail />} /> 
