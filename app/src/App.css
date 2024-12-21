@@ -119,6 +119,78 @@ footer img{
   margin-top: 20px;
 }
 
+/* CSS slots */
+
+/* Estilos para el contenedor del equipo */
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas por fila */
+  gap: 20px; /* Espacio entre los slots */
+  margin: 20px 0;
+}
+
+/* Estilos para cada slot del equipo */
+.team-slot {
+  position: relative;
+  width: 100px; /* Ancho fijo para cada slot */
+  height: 100px; /* Alto fijo para cada slot */
+  border: 2px solid #ccc; /* Borde ligero */
+  border-radius: 8px; /* Bordes redondeados */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden; /* Para asegurarnos de que las imágenes no se desborden */
+}
+
+/* Estilo para las imágenes dentro de los slots */
+.team-slot img {
+  width: 80%;  /* Ajustamos el tamaño de la imagen */
+  height: auto; /* Mantener la proporción de la imagen */
+  object-fit: cover; /* Para que la imagen cubra todo el área del slot sin distorsionarse */
+}
+
+/* Imagen del huevo */
+.team-slot img[src$="egg.png"] {
+  width: 60%;  /* Ajustamos el tamaño del huevo para que sea más pequeño */
+  height: auto; /* Mantener la proporción */
+}
+
+.team-container {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  justify-content: center;
+}
+
+.team-slot {
+  width: 150px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.team-slot.filled {
+  border: 2px solid #007bff;
+  background-color: #e6f7ff;
+}
+
+.team-slot.empty .egg-image {
+  width: 100px;
+  height: auto;
+  opacity: 0.7;
+}
+
+.team-slot.empty:hover {
+  border-color: #28a745;
+}
+
 /* Responsividad */
 @media (max-width: 1200px) {
   .digimons-container {
@@ -145,3 +217,6 @@ footer img{
       grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas muy pequeñas */
   }
 }
+
+
+
