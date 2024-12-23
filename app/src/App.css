@@ -3,26 +3,27 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /*=========== Header ===========*/
-header{
+header {
   display: flex;
   position: fixed;
   width: 100%;
   z-index: 1000;
   padding: 2vh 4%;
-  background-color: black; 
+  background-color: black;
   align-items: center;
 }
 
 /*-- Logo --*/
-#digimon-logo{
+#digimon-logo {
   width: 20%;
 }
-#digimon-logo img{
+#digimon-logo img {
   width: 30%;
 }
 #digimon-logo img:hover {
-  transform: scale(1.1);  
+  transform: scale(1.1);
 }
 
 /*-- Nav --*/
@@ -32,56 +33,65 @@ nav {
 }
 
 nav ul li {
-  display: inline; 
-  margin: 0 1%; 
+  display: inline;
+  margin: 0 1%;
 }
 
 nav ul li a {
-  color: white; 
-  text-decoration: none; 
+  color: white;
+  text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #f39c12; 
+  color: #f39c12;
 }
 
 /*=========== Page Content ===========*/
-.page-content{
+.page-content {
   padding-top: 14vh;
 }
 
 /*=========== Footer ===========*/
-footer{
-  background-color: black; 
+footer {
+  background-color: black;
   padding: 2vh 4%;
 }
 
-footer img{
+footer img {
   height: 3vh;
   padding-right: 1%;
 }
 
-/* Estilo para el contenedor de la lista de Digimons */
+/*=========== Digimon List ===========*/
 .digimons-container {
   display: grid;
-  grid-template-columns: repeat(10, 1fr); /* 10 columnas por fila */
-  gap: 20px;
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 20px; 
   padding: 20px;
   justify-content: center;
   margin: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-/* Estilo para cada tarjeta de Digimon */
 .digimon-card {
-  background-color: #fff;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; 
+  background-image: url('./images/cardBase.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  width: 200px; 
+  height: 300px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  align-items: center; 
+  margin: 10px; 
+  color: white; 
+  text-shadow: 0px 0px 5px black;
+  font-weight: bold;
 }
 
 .digimon-card:hover {
@@ -89,34 +99,22 @@ footer img{
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo para las imágenes dentro de las tarjetas */
 .digimon-card img {
-  width: 100%;
+  width: 90%; 
   height: auto;
-  border-bottom: 2px solid #ddd;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 1; 
 }
 
-/* Estilo para el título de cada Digimon */
 .digimon-title {
-  font-size: 1.2rem;
-  color: #333;
-  padding: 10px;
-  background-color: #f9f9f9;
-  font-weight: bold;
-}
-
-/* Estilo para el mensaje de "Cargando..." */
-.loading {
-  font-size: 1.5rem;
-  color: #007bff;
-  margin-top: 20px;
-}
-
-/* Estilo para cuando no hay resultados */
-.no-results {
-  font-size: 1.5rem;
-  color: #e74c3c;
-  margin-top: 20px;
+  color: white;
+  position: absolute;
+  z-index: 2; 
+  padding-bottom: 2vh;
+  font-size: 14px;
 }
 
 /* CSS slots */
@@ -145,14 +143,14 @@ footer img{
 
 /* Estilo para las imágenes dentro de los slots */
 .team-slot img {
-  width: 80%;  /* Ajustamos el tamaño de la imagen */
+  width: 80%; /* Ajustamos el tamaño de la imagen */
   height: auto; /* Mantener la proporción de la imagen */
   object-fit: cover; /* Para que la imagen cubra todo el área del slot sin distorsionarse */
 }
 
 /* Imagen del huevo */
 .team-slot img[src$="egg.png"] {
-  width: 60%;  /* Ajustamos el tamaño del huevo para que sea más pequeño */
+  width: 60%; /* Ajustamos el tamaño del huevo para que sea más pequeño */
   height: auto; /* Mantener la proporción */
 }
 
@@ -194,27 +192,27 @@ footer img{
 /* Responsividad */
 @media (max-width: 1200px) {
   .digimons-container {
-      grid-template-columns: repeat(6, 1fr); /* 6 columnas en pantallas medianas */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas medianas */
   }
 }
 
 @media (max-width: 768px) {
   h1 {
-      font-size: 2rem;
+    font-size: 2rem;
   }
 
   .digimons-container {
-      grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas pequeñas */
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
   }
 
   .digimon-card {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .digimons-container {
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas muy pequeñas */
+    grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas muy pequeñas */
   }
 }
 
