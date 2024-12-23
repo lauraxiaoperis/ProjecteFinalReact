@@ -103,23 +103,25 @@ function DigimonsList() {
                 {renderPageButtons()}
                 <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages - 1}>Next</button>
             </div>
-
-            {/* =============== Random Attribute - Digimon List =============== */}
-            <h2>Digimons filtered by attribute: {randomAttribute || 'None'}</h2>
-            <div className="digimons-container">
-                {filteredDigimons.length > 0 ? (
-                    filteredDigimons.map((digimon) => (
-                        <Link key={digimon.id} to={`/digimon/${digimon.id}`}>  {/* Link to the details */}
-                            <DigimonCard
-                                key={digimon.id} 
-                                title={digimon.name} 
-                                imageUrl={digimon.image} 
-                            />
-                        </Link>
-                    ))
-                ) : (
-                    <p>No Digimons found with this attribute.</p> 
-                )}
+            <div className='container2'>
+                {/* =============== Random Attribute - Digimon List =============== */}
+                <h2>Digimons filtered by attribute: {randomAttribute || 'None'}</h2>
+                <div className="digimons-container">
+                    {filteredDigimons.length > 0 ? (
+                        filteredDigimons.map((digimon) => (
+                            <Link key={digimon.id} to={`/digimon/${digimon.id}`}>  {/* Link to the details */}
+                                <DigimonCard
+                                    key={digimon.id} 
+                                    title={digimon.name} 
+                                    imageUrl={digimon.image} 
+                                    additionalClass="card-attribute"
+                                />
+                            </Link>
+                        ))
+                    ) : (
+                        <p>No Digimons found with this attribute.</p> 
+                    )}
+                </div>
             </div>
         </div>
     );

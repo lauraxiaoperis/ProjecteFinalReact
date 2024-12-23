@@ -50,17 +50,16 @@ nav ul li a:hover {
 
 /*=========== Parallax Background ===========*/
 .parallax-background {
-  background-image: url('./images/wallpaper.png');  /* Set the image for the background */
-  background-size: cover;                         /* Make sure the background covers the whole container */
-  background-position: center;                    /* Center the background image */
-  background-attachment: fixed;                    /* Create the parallax effect */
-  background-repeat: no-repeat;                    /* Ensure the image doesn't repeat */
-  min-height: 100vh;                               /* Ensure the background takes up at least the full height of the screen */
+  background-image: url('./images/wallpaper.png'); 
+  background-size: cover;                         
+  background-position: center;                    
+  background-attachment: fixed;                  
+  background-repeat: no-repeat;                    
+  min-height: 100vh;                              
 }
 
 /*=========== Page Content ===========*/
 .page-content {
-  padding-bottom: 3vh;
   min-height: 94vh;
 }
 .page-content-2{
@@ -131,6 +130,16 @@ footer img {
   font-size: 14px;
 }
 
+.container2{
+  background-image: url('./images/wallpaper3.png'); 
+  height: 50vh;
+  background-size: cover;
+  background-position: left; 
+  background-repeat: no-repeat; 
+}
+.card-attribute{
+  background-image: url('./images/cardBase2.png'); 
+}
 /*=========== Pagination ===========*/
 .pagination{
   text-align: center;
