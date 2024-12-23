@@ -50,7 +50,7 @@ function Search() {
   };
 
   return (
-    <div>
+    <div className='page-content-2'>
       <h2>Search Digimons</h2>
 
       {/* We use Filter bar component to handle filter inputs */}

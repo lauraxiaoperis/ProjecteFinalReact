@@ -80,7 +80,7 @@ function DigimonTeam() {
   };
 
   return (
-    <div>
+    <div className='page-content-2'>
       <h2>My Digimon Team</h2>  {/* Title of the page */}
 
       {/* FilterBar component for the user to apply filters */}

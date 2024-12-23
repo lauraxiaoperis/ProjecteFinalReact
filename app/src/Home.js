@@ -13,7 +13,7 @@ function DigimonsList() {
 
     const { filteredAttributeName } = useContext(DigimonContext); // Access the context only for attributes
 
-    const numberDigimons = 20;
+    const numberDigimons = 18;
 
     // =============== Fetch - General - Digimon List (Pagination) =============== 
     useEffect(() => {
@@ -37,7 +37,7 @@ function DigimonsList() {
             setRandomAttribute(ranAttribute);
     
             // Fetch Digimons based on the attribute
-            fetch(`https://digi-api.com/api/v1/digimon?attribute=${ranAttribute}&&pageSize=${numberDigimons}`)
+            fetch(`https://digi-api.com/api/v1/digimon?attribute=${ranAttribute}&&pageSize=6`)
                 .then((response) => response.json())
                 .then((data) => {
                     setFilteredDigimons(data.content || []);
@@ -77,9 +77,9 @@ function DigimonsList() {
     };
 
     return (
-        <div>
-            {/*  =============== General Digimon List (Pagination) ===============  */}
-            <h2>Digimon List</h2>
+        <div>            
+            <div className="parallax-background"></div> 
+            {/*  =============== General Digimon List ===============  */}
             <div className="digimons-container">
                 {digimons.length > 0 ? (
                     // If there are Digimons, map and display the cards

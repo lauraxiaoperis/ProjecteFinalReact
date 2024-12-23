@@ -25,7 +25,7 @@ function DigimonDetail(){
 
     // =============== Print =============== 
     return(
-        <div>
+        <div className='page-content-2'>
             {digimonDetail ? (
                 <div id="digimon-detail">
                     <div className='digimon-detail-image'>
