@@ -19,7 +19,9 @@ function App() {
                     <Link to="/"><img src={logo} alt="Digimon logo"/></Link>
                 </div>
                 <nav>
-                    <ul>
+                    <ul><li>
+                            <Link to="/">COLLECTION</Link>
+                        </li>
                         <li>
                             <Link to="/search">SEARCH DIGIMON</Link>
                         </li>
