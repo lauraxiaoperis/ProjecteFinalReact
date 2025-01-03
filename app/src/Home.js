@@ -105,7 +105,7 @@ function DigimonsList() {
             </div>
             <div className='container2'>
                 {/* =============== Random Attribute - Digimon List =============== */}
-                <h2>Digimons filtered by attribute: {randomAttribute || 'None'}</h2>
+                <h2 className='attribute-container2'>DISCOVER DIGIMONS WITH THE MYSTERIOUS ATTRIBUTE<br></br><br></br><span className='class-attribute'><i>{randomAttribute || 'None'}</i></span></h2>
                 <div className="digimons-container">
                     {filteredDigimons.length > 0 ? (
                         filteredDigimons.map((digimon) => (
