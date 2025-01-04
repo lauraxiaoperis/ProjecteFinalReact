@@ -133,7 +133,7 @@ footer img {
 .container2{
   height: 65vh;
   background-color: rgb(122, 177, 228);
-  padding-top: 5vh;
+  padding-top: 7vh;
 }
 .card-attribute{
   background-image: url('./images/cardBase2.png'); 
@@ -188,6 +188,24 @@ h2{
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); 
 }
 
+.attribute-container2{
+  position: relative;
+  left: -100%; 
+  animation: slideIn 2s forwards; 
+}
+
+@keyframes slideIn {
+  0% {
+    left: -100%; 
+  }
+  100% {
+    left: 0; 
+  }
+}
+
+.class-attribute{
+  font-size: 0.9em;
+}
 /*================================================*/
 /*Attribute*/
 .class-attribute{
