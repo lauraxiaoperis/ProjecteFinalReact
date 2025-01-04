@@ -18,7 +18,7 @@
     color: white;                                                 
     z-index: 10;                              
     left: -100%;                                 
-    animation: slideInFromLeft  1.5s forwards;              
+    animation: slideInFromLeft  1.5s forwards;           
 }
 
 /*=========== Animación para el Título ===========*/
@@ -38,5 +38,188 @@
 }
 
 .team{
-    padding-top: 5vh;
+    margin: 10vh;
 }
+.team-container{
+    justify-content: right;
+    width: 100%;
+    margin-right: 10%;
+    border: 2px solid #7a7a7a; 
+    background-color: #dadada;
+    padding: 20px;
+    border-radius: 20px;
+}
+.digimons-container-3 {
+    margin: 10vh;
+    padding: 0 5%; 
+    display: grid;
+    grid-template-columns: repeat(14, 1fr); 
+    gap: 15px; 
+    justify-items: center; 
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.digimon-card-3 {
+    width: 95px; 
+    height: 95px; 
+}
+
+.digimon-card-3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    background-color: #f0f0f0; 
+    border-radius: 14px; 
+    filter: brightness(0.7) contrast(1.1);
+}
+.digimon-card-3:hover {
+    transform: translateY(-2px);
+}
+.digimon-card-3 img:hover {
+    filter: none;
+    cursor: pointer;
+}
+.page-content-3{
+    padding-bottom: 10vh;
+}
+.team-general{
+    width: 60%;
+}
+
+.team-slot {
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.3s ease; 
+    cursor: default !important;
+}
+
+.team-slot.has-digimon:hover img{
+    filter: brightness(0.5) sepia(0.7) saturate(2); 
+    cursor: pointer; 
+}
+
+
+.team-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    background: rgb(170, 23, 23);
+    padding: 5px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    z-index: 1000; 
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+}
+
+.team-slot.has-digimon:hover .overlay {
+    opacity: 1; 
+}
+
+button{
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff; 
+    background-color: #f39c12;
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #000000; 
+}
+.ran-button {
+    text-align: center;
+    margin-top: 1vh;
+    animation: slideInFromRight 3s forwards;
+    position: absolute; 
+    right: 0;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        right: -100%;
+    }
+    100% {
+        right: 38%; 
+    }
+}
+
+.team-slot {
+    position: relative;
+    width: 100px; 
+    height: 100px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden; 
+  }
+  
+  .team-slot img {
+    width: 90%; 
+    height: auto; 
+    object-fit: cover; 
+  }
+  
+  /* Imagen del huevo */
+  .team-slot img[src$="egg.png"] {
+    width: 60%; 
+    height: auto;
+  }
+  
+  .team-container {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    justify-content: center;
+  }
+  
+  .team-slot {
+    width: 150px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #f9f9f9;
+    position: relative;
+    border-radius: 20px;
+  }
+  
+  .team-slot.filled {
+    border: 2px solid #007bff;
+    background-color: #e6f7ff;
+  }
+  
+  .team-slot.empty .egg-image {
+    width: 100px;
+    height: auto;
+    opacity: 0.7;
+  }
+  
+  .team-slot.empty:hover {
+    border-color: #28a745;
+  }
+  
+  
+  
+  
+
+
+

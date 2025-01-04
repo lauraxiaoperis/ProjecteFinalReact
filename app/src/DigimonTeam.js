@@ -15,7 +15,7 @@ function DigimonTeam() {
     return savedTeam || Array(6).fill(null); // Default to 6 empty slots
   });
   
-  const numberDigimons = 20; // Number of Digimons to fetch per page
+  const numberDigimons = 98; // Number of Digimons to fetch per page
 
   // handleSearch function to fetch Digimons based on the user's filters
   const handleSearch = (filters) => {
@@ -88,37 +88,44 @@ function DigimonTeam() {
       <div className='filter-team team'>
         {/* FilterBar component for the user to apply filters */}
         <FilterBar onSearch={handleSearch} />
-
-        {/* Team container to display the team slots (6 slots in total) */}
-        <div className="team-container">
-          {team.map((digimon, index) => (
-            <div
-              key={index}
-              className="team-slot"
-              onClick={() => digimon && removeFromTeam(index)}  // Remove the Digimon if there's one in the slot
-            >
-              {/* If there's a Digimon in the slot, show its image; otherwise, show the egg image */}
-              {digimon ? (
-                <img src={digimon.image} alt={digimon.name} title="Click to remove" />
-              ) : (
-                <img src={eggImage} alt="Empty Slot" title="Empty slot" />
-              )}
-            </div>
-          ))}
+        <div className='team-general'>
+          {/* Team container to display the team slots (6 slots in total) */}
+          <div className="team-container">
+            {team.map((digimon, index) => (
+              <div
+                key={index}
+                className={`team-slot ${digimon ? 'has-digimon' : ''}`}
+                onClick={() => digimon && removeFromTeam(index)}  // Remove the Digimon if there's one in the slot
+              >
+                {/* If there's a Digimon in the slot, show its image; otherwise, show the egg image */}
+                {digimon ? (
+                  <img src={digimon.image} alt={digimon.name} title="Click to remove" />
+                ) : (
+                  <img src={eggImage} alt="Empty Slot" title="Empty slot" />
+                )}
+                {digimon && (
+                  <div className="overlay">
+                    <span>Remove</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className='ran-button'>
+            {/* Button to fill the team with random Digimons */}
+            <button onClick={fillTeamWithRandom} disabled={team.every((slot) => slot !== null)}>
+              Fill Team with Random Digimons
+            </button>
+          </div>
         </div>
       </div>
-      {/* Button to fill the team with random Digimons */}
-      <button onClick={fillTeamWithRandom} disabled={team.every((slot) => slot !== null)}>
-        Fill Team with Random Digimons
-      </button>
 
       {/* List of available Digimons to add to the team */}
-      <div className="digimons-container">
+      <div className="digimons-container-3">
         {digimons.length > 0 ? (
           digimons.map((digimon) => (
-            <div key={digimon.id} onClick={() => addToTeam(digimon)}>
-              {/* When a Digimon is clicked, add it to the team */}
-              <DigimonCard title={digimon.name} imageUrl={digimon.image} />
+            <div className='digimon-card-3' key={digimon.id} onClick={() => addToTeam(digimon)}>
+              < img src={digimon.image} alt={digimon.name} />
             </div>
           ))
         ) : (
