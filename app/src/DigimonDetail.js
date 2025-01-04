@@ -25,7 +25,7 @@ function DigimonDetail(){
 
     // =============== Print =============== 
     return(
-        <div className='page-content-2'>
+        <div className='page-content-4'>
             {digimonDetail ? (
                 <div id="digimon-detail">
                     <div className='digimon-detail-image'>
@@ -91,6 +91,22 @@ function DigimonDetail(){
                             </div>
                         )}
                     </div>
+                    {/* Evoluciones Siguientes */}
+                    {digimonDetail.nextEvolutions?.length > 0 && (
+                        <div className='evolutions-section'>
+                            <h4>🚀 Evoluciones Siguientes</h4>
+                            <div className='evolutions-container'>
+                                {digimonDetail.nextEvolutions.slice(0, 5).map((evolution, index) => (
+                                    <div key={index} className='evolution-card'>
+                                        <a href={`/digimon/${evolution.id}`}>
+                                            <img src={evolution.image} alt={evolution.digimon} />
+                                            <p>{evolution.digimon}</p>
+                                        </a>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             ) : (
                 <p>There are no Details in this Digimon.</p> 

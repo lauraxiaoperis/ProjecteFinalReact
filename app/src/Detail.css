@@ -1,116 +1,219 @@
-.page-content{
-    background-color: #0a1428;
-    color: white;
-}
-#digimon-detail{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-.digimon-detail-image{
-    width: 20%;
-    margin-right: 5%;
-    margin-left: 5%;
-}
-.digimon-detail-image img{
-    width: 100%;
-    border: 5px solid #c8aa6e; 
-    border-radius: 10px !important;
-}
-.digimon-detail-info{
-    width: 65%;
-    margin-right: 5%;
-    align-content: center;
-}
-h3{
-    font-size: 2.8em;
-    color: #c8aa6e;
-    font-style: italic;
-}
-#description{
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-}
-.detail-square{
-    border: 2px solid #c8aa6e; 
-    padding: 8px;
-    width: 15%;
-    margin-right: 2%;
+/* Estilos Generales */
+.page-content-4 {
     display: flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 14vh;
 }
-#attri{
-    display: flex;
+
+#digimon-detail {
+    max-width: 900px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    margin: 20px;
 }
-.title{
-    color: #c8aa6e;
-    font-weight: 600;
-}
-.digimon-detail-fields{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 7vh;
-    margin-bottom: 7vh;
-    background-color: #112244;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-}
-.skills-title, #field{
-    font-size: 1.5em;
-    color: white;
-    font-weight: 600;
-    font-style: italic;
-}
-#field{
-    width: 100%;
-    text-align: center;
-    padding-bottom: 5vh;
-    font-size: 2em;
-}
-.field-items{
-    width: 100%;
-}
-.field-items img{
-    height: 5vh;
-}
-.field-items span{
-    color: #d3d3d3;
-}
-#field-group{
-    display: flex;
-    width: 100%;
-    text-align: center;
-    margin-left: 25%;
-    margin-right: 25%;
-}
-#field-ext{
-    width: 100%;
-}
-.digimon-skills-fields{
-    width: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-.skills-group{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-left: 3%;
-}
-.skills-title{
-    width: 100%;
-    padding-left: 3%;
-    font-size: 2em;
-    padding-bottom: 2vh;
-}
-.detail-skills{
-    border: 2px solid #c8aa6e; 
-    padding: 8px;
-    width: 15%;
-    margin-right: 1%;
+
+/* Imagen Principal */
+.digimon-detail-image {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.digimon-detail-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+/* Información Principal */
+.digimon-detail-info {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.digimon-detail-info h3 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Atributos */
+#attri {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.detail-square {
+    background: #f0f4f8;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.detail-square .title {
+    font-weight: bold;
+    color: #555;
+}
+
+.detail-square p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Campos (FIELDS) */
+#field-ext {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#field {
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+#field-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.field-items {
+    text-align: center;
+    margin: 10px;
+}
+
+.field-items img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.field-items span {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Habilidades (SKILLS) */
+.digimon-skills-fields {
+    margin-top: 30px;
+}
+
+.skills-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.skills-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.detail-skills {
+    background: #e8f4ff;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detail-skills .title {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 14px;
+}
+
+/* Evoluciones Siguientes */
+.evolutions-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.evolutions-section h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.evolutions-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.evolution-card {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.evolution-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.evolution-card p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #555;
+}
+
+.evolution-card:hover {
+    transform: translateY(-5px);
+    border-color: #007bff;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    #attri {
+        flex-direction: column;
+    }
+
+    .detail-square {
+        margin-bottom: 10px;
+    }
+
+    .evolutions-container {
+        gap: 5px;
+    }
+
+    .evolution-card {
+        width: 120px;
+    }
 }

@@ -3,7 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.page-content{
+  background-color: #0a1428;
+  color: white;
+}
 /*=========== Header ===========*/
 header {
   display: flex;
