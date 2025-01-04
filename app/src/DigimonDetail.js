@@ -1,118 +1,127 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './Detail.css'; 
+import { useParams, Link } from 'react-router-dom';
+import './Detail.css';
+import DigimonCard from './DigimonCard';  // Import the DigimonCard component
 
-function DigimonDetail(){
-    const [digimonDetail, setDigimonDetail] = useState([]); // Estado para almacenar el Detalle del Digimon
-    const { digimonId } = useParams(); // Obtiene el parámetro dinámico de la URL
+function DigimonDetail() {
+    const [digimonDetail, setDigimonDetail] = useState([]); // State to store Digimon details
+    const { digimonId } = useParams(); // Get the Digimon ID from the URL
 
-    // =============== Fetch - Digimon Detail =============== 
-    console.log(`Id: `+digimonId);
+    // =============== Fetch - Digimon Details ===============
     useEffect(() => {
+        // Fetch Digimon details based on the ID
         fetch(`https://digi-api.com/api/v1/digimon/${digimonId}`)
             .then((response) => response.json())
             .then((data) => {
-                setDigimonDetail(data || null);
-             //   console.log('Data :', data);
+                setDigimonDetail(data || null); // Set the fetched data into state
             })
             .catch((error) => {
-                console.error('Error fetching Digimon Details:', error);
+                console.error('Error fetching Digimon Details:', error); // Handle errors
             });
-    }, [digimonId]); 
-    useEffect(() => {
-        console.log('Digimon Detail actualizado:', digimonDetail);
-    }, [digimonDetail]);
+    }, [digimonId]); // Run this effect when the Digimon ID changes
 
-    // =============== Print =============== 
-    return(
+    return (
         <div className='page-content-4'>
             {digimonDetail ? (
-                <div id="digimon-detail">
-                    <div className='digimon-detail-image'>
-                        {digimonDetail.images?.[0] && ( //? comprova si existeix el primer element de images
+                <div id="digimon-card">
+                    {/* Main Image of the Digimon */}
+                    <div className='digimon-card-left'>
+                        {digimonDetail.images?.[0] && (
                             <img 
-                                src={digimonDetail.images[0].href}
-                                alt={digimonDetail.name}
+                                src={digimonDetail.images[0].href} // Image source
+                                alt={digimonDetail.name} // Alt text for the image
                             />
                         )}
                     </div>
-                    <div className='digimon-detail-info'>
-                        <h3>{digimonDetail.name}</h3>
+
+                    {/* General Information */}
+                    <div className='digimon-card-right'>
+                        <h2 className='digimon-name'>{digimonDetail.name}</h2> {/* Digimon Name */}
                         {digimonDetail.descriptions?.[1] && (
-                            <p id="description">{digimonDetail.descriptions[1].description}</p>
+                            <p className='digimon-description'>
+                                {digimonDetail.descriptions[1].description} {/* Description of the Digimon */}
+                            </p>
                         )}
-                        <div id="attri">
-                            <div className='detail-square'>
-                                {digimonDetail.levels?.[0] && (
-                                    <p><span className='title'>LEVEL</span><br></br> {digimonDetail.levels[0].level}</p>
-                                )}
-                            </div>
-                            <div className='detail-square'>
-                                {digimonDetail.types?.[0] && (
-                                    <p><span className='title'>TYPE</span><br></br>{digimonDetail.types[0].type}</p>
-                                )}
-                            </div>
-                            <div className='detail-square'>
-                            {digimonDetail.attributes?.length > 0 && (
-                                <p><span className='title'>ATTRIBUTES</span><br></br>{digimonDetail.attributes.map(attribute => attribute.attribute).join(', ')}</p> 
-                            )}
-                            </div>
+                        <div className='digimon-stats'>
+                            <p><strong>LEVEL:</strong> {digimonDetail.levels?.[0]?.level || 'Unknown'}</p> {/* Digimon Level */}
+                            <p><strong>TYPE:</strong> {digimonDetail.types?.[0]?.type || 'Unknown'}</p> {/* Digimon Type */}
+                            <p><strong>ATTRIBUTES:</strong> {digimonDetail.attributes?.map(attr => attr.attribute).join(', ') || 'None'}</p> {/* Digimon Attributes */}
                         </div>
                     </div>
-                    <div id='field-ext'>
-                        {digimonDetail.fields?.length > 0 && (
-                            <div className='digimon-detail-fields'>
-                                <p id="field">FIELDS</p>
-                                <div id='field-group'>
-                                    {digimonDetail.fields.map((item, index) => (
-                                        <div class="field-items" key={index}>
-                                            <img
-                                                src={item.image}
-                                                alt={item.field}
-                                            /><br></br><br></br>
-                                            <span>{item.field}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                    <div className='digimon-skills-fields'>
-                        {digimonDetail.skills?.[0] && (
-                            <div>
-                                <p className='skills-title'>SKILLS</p>
-                                <div className='skills-group'>
-                                {digimonDetail.skills.map((item, index) => (
-                                    <div className='detail-skills' key={index}>
-                                        <p><span className='title'>{item.skill}</span><br></br><br></br> {item.description}</p>
+
+                     {/* Fields Section */}
+                     {digimonDetail.fields?.length > 0 && (
+                        <div className='digimon-fields'>
+                            <h4>FIELDS</h4> {/* Section title */}
+                            <div className='fieldss'>
+                                {digimonDetail.fields.map((field, index) => (
+                                    <div key={index} className='field-card'>
+                                        <img src={field.image} alt={field.field} className="field-image" /> {/* Field Image */}
+                                        <p>{field.field}</p> {/* Field Name */}
                                     </div>
                                 ))}
-                                </div>
                             </div>
-                        )}
-                    </div>
-                    {/* Evoluciones Siguientes */}
-                    {digimonDetail.nextEvolutions?.length > 0 && (
-                        <div className='evolutions-section'>
-                            <h4>🚀 Evoluciones Siguientes</h4>
-                            <div className='evolutions-container'>
-                                {digimonDetail.nextEvolutions.slice(0, 5).map((evolution, index) => (
-                                    <div key={index} className='evolution-card'>
-                                        <a href={`/digimon/${evolution.id}`}>
-                                            <img src={evolution.image} alt={evolution.digimon} />
-                                            <p>{evolution.digimon}</p>
-                                        </a>
+                        </div>
+                    )}
+                    
+                    {/* Skills Section */}
+                    {digimonDetail.skills?.length > 0 && (
+                        <div className='digimon-skills'>
+                            <h4>SKILLS</h4> {/* Section title */}
+                            <div className='skills-container'>
+                                {digimonDetail.skills.map((skill, index) => (
+                                    <div key={index} className='skill-card'>
+                                        <p><strong>{skill.skill}</strong></p> {/* Skill Name */}
+                                        <p>{skill.description}</p> {/* Skill Description */}
                                     </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Prior Evolutions Section */}
+                    {digimonDetail.priorEvolutions?.length > 0 && (
+                        <div className='digimon-evolutions'>
+                            <h4>Prior Evolutions</h4> {/* Section title */}
+                            <div className='digimons-container'>
+                                {digimonDetail.priorEvolutions.slice(0, 5).map((evolution, index) => (
+                                    <Link key={index} to={`/digimon/${evolution.id}`}> {/* Link to the details */}
+                                        <DigimonCard
+                                            title={evolution.digimon} 
+                                            imageUrl={evolution.image} 
+                                            additionalClass="card-evolution"
+                                        />
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Next Evolutions Section */}
+                    {digimonDetail.nextEvolutions?.length > 0 && (
+                        <div className='digimon-evolutions'>
+                            <h4>Next Evolutions</h4> {/* Section title */}
+                            <div className='digimons-container'>
+                                {digimonDetail.nextEvolutions.slice(0, 5).map((evolution, index) => (
+                                    <Link key={index} to={`/digimon/${evolution.id}`}> {/* Link to the details */}
+                                        <DigimonCard
+                                            title={evolution.digimon} 
+                                            imageUrl={evolution.image} 
+                                            additionalClass="card-evolution"
+                                        />
+                                    </Link>
                                 ))}
                             </div>
                         </div>
                     )}
                 </div>
             ) : (
-                <p>There are no Details in this Digimon.</p> 
+                <p>No details available for this Digimon.</p> // If no details found
             )}
         </div>
     );
 }
 
 export default DigimonDetail;
+
+
