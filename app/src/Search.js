@@ -7,7 +7,7 @@ import './App.css';
 
 function Search() {
   const [digimons, setDigimons] = useState([]); // Stores the Digimons returned by the API after applying filters
-  const numberDigimons = 20; // Number of Digimons to fetch per page
+  const numberDigimons = 28; // Number of Digimons to fetch per page
   
    // Use context to get both attributes and levels
    const { filteredAttributeName, levels } = useContext(DigimonContext);
@@ -51,21 +51,19 @@ function Search() {
 
   return (
     <div className='page-content-2'>
-      <h2>Search Digimons</h2>
-
       {/* We use Filter bar component to handle filter inputs */}
       <FilterBar onSearch={handleSearch} />
 
-      <div className="digimons-container">
+      <div className="digimons-container-2">
         {/* Display Digimon cards*/}
         {digimons.length > 0 ? (
           digimons.map((digimon) => (
             <Link key={digimon.id} to={`/digimon/${digimon.id}`}>
-              <DigimonCard title={digimon.name} imageUrl={digimon.image} />
+              <DigimonCard title={digimon.name} imageUrl={digimon.image} additionalClass="digimon-card-2"/>
             </Link>
           ))
         ) : (
-          <p>No Digimons found with the selected filters.</p>
+          <p></p>
         )}
       </div>
     </div>

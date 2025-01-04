@@ -4,6 +4,7 @@ import DigimonCard from './DigimonCard';  // Import DigimonCard to display indiv
 import FilterBar from './FilterBar';  // Import the FilterBar component to allow filtering Digimons
 import eggImage from './images/digimon_egg.jpg';  // Import egg image for empty slots
 import './App.css';  // Import CSS for styling
+import './Team.css';
 
 function DigimonTeam() {
   // Load the team from localStorage if available, otherwise initialize an empty team
@@ -80,30 +81,32 @@ function DigimonTeam() {
   };
 
   return (
-    <div className='page-content-2'>
-      <h2>My Digimon Team</h2>  {/* Title of the page */}
-
-      {/* FilterBar component for the user to apply filters */}
-      <FilterBar onSearch={handleSearch} />
-
-      {/* Team container to display the team slots (6 slots in total) */}
-      <div className="team-container">
-        {team.map((digimon, index) => (
-          <div
-            key={index}
-            className="team-slot"
-            onClick={() => digimon && removeFromTeam(index)}  // Remove the Digimon if there's one in the slot
-          >
-            {/* If there's a Digimon in the slot, show its image; otherwise, show the egg image */}
-            {digimon ? (
-              <img src={digimon.image} alt={digimon.name} title="Click to remove" />
-            ) : (
-              <img src={eggImage} alt="Empty Slot" title="Empty slot" />
-            )}
-          </div>
-        ))}
+    <div className='page-content-3'>
+      <div className="parallax-background-2">
+        <h2 className="title-team-2">CREATE YOUR OWN DIGIMON TEAM</h2>
       </div>
+      <div className='filter-team team'>
+        {/* FilterBar component for the user to apply filters */}
+        <FilterBar onSearch={handleSearch} />
 
+        {/* Team container to display the team slots (6 slots in total) */}
+        <div className="team-container">
+          {team.map((digimon, index) => (
+            <div
+              key={index}
+              className="team-slot"
+              onClick={() => digimon && removeFromTeam(index)}  // Remove the Digimon if there's one in the slot
+            >
+              {/* If there's a Digimon in the slot, show its image; otherwise, show the egg image */}
+              {digimon ? (
+                <img src={digimon.image} alt={digimon.name} title="Click to remove" />
+              ) : (
+                <img src={eggImage} alt="Empty Slot" title="Empty slot" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
       {/* Button to fill the team with random Digimons */}
       <button onClick={fillTeamWithRandom} disabled={team.every((slot) => slot !== null)}>
         Fill Team with Random Digimons

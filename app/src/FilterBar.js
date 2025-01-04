@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import DigimonContext from './DigimonContext';
 import './App.css';
+import './FilterBar.css';
 
 /**
  * FilterBar component - reusable filter bar for searching Digimons.
@@ -30,7 +31,7 @@ function FilterBar({ onSearch }) {
         <div className="filter-container">
             {/* Name filter input */}
             <div className="filter">
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">NAME</label>
                 <input
                     type="text"
                     id="name"
@@ -43,7 +44,7 @@ function FilterBar({ onSearch }) {
 
             {/* Filter by attribute */}
             <div className="filter">
-                <label htmlFor="attribute">Attribute:</label>
+                <label htmlFor="attribute">ATTRIBUTE ✴︎</label>
                 {/* Dropdown menu for the user to select an attribute */}
                 <select
                     id="attribute"
@@ -68,14 +69,14 @@ function FilterBar({ onSearch }) {
                         // When the checkbox state changes, update the "xAntibody" state
                         onChange={(e) => setXAntibody(e.target.checked)}
                     />
-                    xAntibody
+                    xAntibody 
                 </label>
             </div>
 
             {/* Filter by level */}
              {/* Similar to the attribute filter but uses the list fetched from the API */}
             <div className="filter">
-                <label htmlFor="level">Level:</label>
+                <label htmlFor="level">LEVEL ⚔</label>
                 <select
                     id="level"
                     value={selectedLevel}

@@ -191,7 +191,7 @@ h2{
 .attribute-container2{
   position: relative;
   left: -100%; 
-  animation: slideIn 2s forwards; 
+  animation: slideIn 3s forwards; 
 }
 
 @keyframes slideIn {
