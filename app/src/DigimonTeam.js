@@ -13,7 +13,7 @@ function DigimonTeam() {
   const [savedTeams, setSavedTeams] = useState({}); // Object to store saved teams with names
   const [teamName, setTeamName] = useState(''); // Name for the current team to be saved
   
-  const numberDigimons = 98; // Number of Digimons to fetch per page
+  const numberDigimons = 98; // Number of Digimons to fe tch per page
 
   // Load saved teams from localStorage when the component mounts
   useEffect(() => {
