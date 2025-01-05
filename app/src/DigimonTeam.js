@@ -122,55 +122,67 @@ const deleteTeam = (teamName) => {
 };
 
 return (
-  <div>
-    <h2>My Digimon Team</h2>
+  <div className='page-content-3'>
+    <div className="parallax-background-2">
+      <h2 className="title-team-2">CREATE YOUR OWN DIGIMON TEAM</h2>
+    </div>
+    <div className='filter-team team'>
+      {/* FilterBar to filter Digimons */}
+      <FilterBar onSearch={handleSearch} />
 
-    {/* FilterBar to filter Digimons */}
-    <FilterBar onSearch={handleSearch} />
-
-    {/* Display the current team */}
-    <div className="team-container">
-      {team.map((digimon, index) => (
-        <div
-          key={index}
-          className="team-slot"
-          onClick={() => digimon && removeFromTeam(index)}
-        >
-          {digimon ? (
-            <img src={digimon.image} alt={digimon.name} title="Click to remove" />
-          ) : (
-            <img src={eggImage} alt="Empty Slot" title="Empty slot" />
-          )}
+      <div className='team-general'>
+        {/* Display the current team */}
+        <div className="team-container">
+          {team.map((digimon, index) => (
+            <div
+              key={index}
+              className={`team-slot ${digimon ? 'has-digimon' : ''}`}
+              onClick={() => digimon && removeFromTeam(index)}
+            >
+              {digimon ? (
+                <>
+                  <img src={digimon.image} alt={digimon.name} title="Click to remove" />
+                  <div className="overlay">
+                    <span>Remove</span>
+                  </div>
+                </>
+              ) : (
+                <img src={eggImage} alt="Empty Slot" title="Empty slot" />
+              )}
+            </div>
+          ))}
         </div>
-      ))}
+
+        {/* Buttons to manage the team */}
+        <div className='ran-button'>
+          <button onClick={fillTeamWithRandom} disabled={team.every((slot) => slot !== null)}>
+            Fill Team with Random Digimons
+          </button>
+        </div>
+        <div className='team-management'>
+          <input
+            type="text"
+            value={teamName}
+            onChange={(e) => setTeamName(e.target.value)}
+            placeholder="Enter team name"
+          />
+          <button onClick={saveTeam}>Save Team</button>
+        </div>
+      </div>
     </div>
 
-    {/* Buttons to manage the team */}
-    <div>
-      <button onClick={fillTeamWithRandom} disabled={team.every((slot) => slot !== null)}>
-        Fill Team with Random Digimons
-      </button>
-      <input
-        type="text"
-        value={teamName}
-        onChange={(e) => setTeamName(e.target.value)}
-        placeholder="Enter team name"
-      />
-      <button onClick={saveTeam}>Save Team</button>
-    </div>
-
-    {/* Display saved teams with name and button to load and delete*/}
-    <div>
+    {/* Display saved teams */}
+    <div className="saved-teams-container">
       <h3>Saved Teams</h3>
       {Object.keys(savedTeams).length > 0 ? (
-        <ul>
+        <ul className="saved-teams-list">
           {Object.keys(savedTeams).map((name) => (
-            <li key={name}>
+            <li key={name} className="saved-team-item">
               {name}
               <button onClick={() => loadTeam(name)}>Load</button>
               <button onClick={() => deleteTeam(name)} style={{ marginLeft: '10px' }}>
-            Delete
-          </button>
+                Delete
+              </button>
             </li>
           ))}
         </ul>
@@ -180,11 +192,11 @@ return (
     </div>
 
     {/* List of Digimons */}
-    <div className="digimons-container">
+    <div className="digimons-container-3">
       {digimons.length > 0 ? (
         digimons.map((digimon) => (
-          <div key={digimon.id} onClick={() => addToTeam(digimon)}>
-            <DigimonCard title={digimon.name} imageUrl={digimon.image} />
+          <div className='digimon-card-3' key={digimon.id} onClick={() => addToTeam(digimon)}>
+            <img src={digimon.image} alt={digimon.name} />
           </div>
         ))
       ) : (
