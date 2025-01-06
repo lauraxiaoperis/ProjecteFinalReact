@@ -132,6 +132,15 @@ return (
 
       <div className='team-general'>
         {/* Display the current team */}
+        <div className='team-management'>
+          <input
+            type="text"
+            value={teamName}
+            onChange={(e) => setTeamName(e.target.value)}
+            placeholder="Enter team name"
+          />
+          <button onClick={saveTeam}>Save Team</button>
+        </div>
         <div className="team-container">
           {team.map((digimon, index) => (
             <div
@@ -158,15 +167,6 @@ return (
           <button onClick={fillTeamWithRandom} disabled={team.every((slot) => slot !== null)}>
             Fill Team with Random Digimons
           </button>
-        </div>
-        <div className='team-management'>
-          <input
-            type="text"
-            value={teamName}
-            onChange={(e) => setTeamName(e.target.value)}
-            placeholder="Enter team name"
-          />
-          <button onClick={saveTeam}>Save Team</button>
         </div>
       </div>
     </div>

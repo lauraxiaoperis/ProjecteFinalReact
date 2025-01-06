@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './Detail.css';
-import DigimonCard from './DigimonCard';  // Import the DigimonCard component
+import DigimonCard from './DigimonCard';  
 
 function DigimonDetail() {
     const [digimonDetail, setDigimonDetail] = useState([]); // State to store Digimon details
@@ -9,14 +9,13 @@ function DigimonDetail() {
 
     // =============== Fetch - Digimon Details ===============
     useEffect(() => {
-        // Fetch Digimon details based on the ID
         fetch(`https://digi-api.com/api/v1/digimon/${digimonId}`)
             .then((response) => response.json())
             .then((data) => {
-                setDigimonDetail(data || null); // Set the fetched data into state
+                setDigimonDetail(data || null); 
             })
             .catch((error) => {
-                console.error('Error fetching Digimon Details:', error); // Handle errors
+                console.error('Error fetching Digimon Details:', error); 
             });
     }, [digimonId]); // Run this effect when the Digimon ID changes
 
@@ -28,18 +27,18 @@ function DigimonDetail() {
                     <div className='digimon-card-left'>
                         {digimonDetail.images?.[0] && (
                             <img 
-                                src={digimonDetail.images[0].href} // Image source
-                                alt={digimonDetail.name} // Alt text for the image
+                                src={digimonDetail.images[0].href} 
+                                alt={digimonDetail.name} 
                             />
                         )}
                     </div>
 
                     {/* General Information */}
                     <div className='digimon-card-right'>
-                        <h2 className='digimon-name'>{digimonDetail.name}</h2> {/* Digimon Name */}
+                        <h2 className='digimon-name'>{digimonDetail.name}</h2> 
                         {digimonDetail.descriptions?.[1] && (
                             <p className='digimon-description'>
-                                {digimonDetail.descriptions[1].description} {/* Description of the Digimon */}
+                                {digimonDetail.descriptions[1].description} 
                             </p>
                         )}
                         <div className='digimon-stats'>
@@ -52,12 +51,12 @@ function DigimonDetail() {
                      {/* Fields Section */}
                      {digimonDetail.fields?.length > 0 && (
                         <div className='digimon-fields'>
-                            <h4>FIELDS</h4> {/* Section title */}
+                            <h2>FIELDS</h2> 
                             <div className='fieldss'>
                                 {digimonDetail.fields.map((field, index) => (
                                     <div key={index} className='field-card'>
-                                        <img src={field.image} alt={field.field} className="field-image" /> {/* Field Image */}
-                                        <p>{field.field}</p> {/* Field Name */}
+                                        <img src={field.image} alt={field.field} className="field-image" /> 
+                                        <p>{field.field}</p> 
                                     </div>
                                 ))}
                             </div>
@@ -67,12 +66,12 @@ function DigimonDetail() {
                     {/* Skills Section */}
                     {digimonDetail.skills?.length > 0 && (
                         <div className='digimon-skills'>
-                            <h4>SKILLS</h4> {/* Section title */}
+                            <h2>SKILLS</h2> 
                             <div className='skills-container'>
                                 {digimonDetail.skills.map((skill, index) => (
                                     <div key={index} className='skill-card'>
-                                        <p><strong>{skill.skill}</strong></p> {/* Skill Name */}
-                                        <p>{skill.description}</p> {/* Skill Description */}
+                                        <p><strong>{skill.skill}</strong></p> 
+                                        <p>{skill.description}</p> 
                                     </div>
                                 ))}
                             </div>
@@ -82,10 +81,10 @@ function DigimonDetail() {
                     {/* Prior Evolutions Section */}
                     {digimonDetail.priorEvolutions?.length > 0 && (
                         <div className='digimon-evolutions'>
-                            <h4>Prior Evolutions</h4> {/* Section title */}
+                            <h2>Prior Evolutions</h2> 
                             <div className='digimons-container'>
-                                {digimonDetail.priorEvolutions.slice(0, 5).map((evolution, index) => (
-                                    <Link key={index} to={`/digimon/${evolution.id}`}> {/* Link to the details */}
+                                {digimonDetail.priorEvolutions.slice(0, 6).map((evolution, index) => (
+                                    <Link key={index} to={`/digimon/${evolution.id}`}> 
                                         <DigimonCard
                                             title={evolution.digimon} 
                                             imageUrl={evolution.image} 
@@ -100,10 +99,10 @@ function DigimonDetail() {
                     {/* Next Evolutions Section */}
                     {digimonDetail.nextEvolutions?.length > 0 && (
                         <div className='digimon-evolutions'>
-                            <h4>Next Evolutions</h4> {/* Section title */}
+                            <h2>Next Evolutions</h2> 
                             <div className='digimons-container'>
-                                {digimonDetail.nextEvolutions.slice(0, 5).map((evolution, index) => (
-                                    <Link key={index} to={`/digimon/${evolution.id}`}> {/* Link to the details */}
+                                {digimonDetail.nextEvolutions.slice(0, 6).map((evolution, index) => (
+                                    <Link key={index} to={`/digimon/${evolution.id}`}> 
                                         <DigimonCard
                                             title={evolution.digimon} 
                                             imageUrl={evolution.image} 

@@ -216,7 +216,13 @@ button:hover {
   .team-slot.empty:hover {
     border-color: #28a745;
   }
-  
+  .team-management{
+    text-align: right;
+  }
+  input{
+    margin-right: 1%;
+    padding: 10px;
+  }
   
   
   
