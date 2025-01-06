@@ -6,22 +6,22 @@
     background-repeat: no-repeat;              
     background-size: 100%;                     
     height: 30vh;                               
-    position: relative;                         
+    position: relative;                          
 }
 
-/*=========== Animación y Estilo para el Título ===========*/
+/*=========== Animation and Style for the Title ===========*/
 .title-team-2 {
     position: absolute;                         
     top: 65%;                                    
-    left: 50%;                                   
+    left: 50%;                                  
     transform: translate(-50%, -50%);            
-    color: white;                                                 
-    z-index: 10;                              
+    color: white;                                                  
+    z-index: 10;                                
     left: -100%;                                 
-    animation: slideInFromLeft  1.5s forwards;           
+    animation: slideInFromLeft  1.5s forwards;          
 }
 
-/*=========== Animación para el Título ===========*/
+/*=========== Animation for the Title ===========*/
 @keyframes slideInFromLeft  {
     0% {
         left: -100%; 
@@ -31,7 +31,7 @@
     }
 }
 
-/*=========== Estilo para el Contenedor de Elementos (si es necesario) ===========*/
+/*=========== Style for the Element Container ===========*/
 .filter-team {
     display: flex;
     align-items: center;
@@ -40,6 +40,7 @@
 .team{
     margin: 10vh;
 }
+
 .team-container{
     justify-content: right;
     width: 100%;
@@ -49,6 +50,7 @@
     padding: 20px;
     border-radius: 20px;
 }
+
 .digimons-container-3 {
     margin: 10vh;
     padding: 0 5%; 
@@ -73,16 +75,20 @@
     border-radius: 14px; 
     filter: brightness(0.7) contrast(1.1);
 }
+
 .digimon-card-3:hover {
     transform: translateY(-2px);
 }
+
 .digimon-card-3 img:hover {
     filter: none;
     cursor: pointer;
 }
+
 .page-content-3{
     padding-bottom: 10vh;
 }
+
 .team-general{
     width: 60%;
 }
@@ -98,7 +104,6 @@
     filter: brightness(0.5) sepia(0.7) saturate(2); 
     cursor: pointer; 
 }
-
 
 .team-slot img {
     width: 100%;
@@ -139,15 +144,21 @@ button{
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 button:hover {
     background-color: #000000; 
 }
+
 .ran-button {
     text-align: center;
     margin-top: 1vh;
     animation: slideInFromRight 3s forwards;
     position: absolute; 
     right: 0;
+}
+
+.buttons-container{
+    justify-content: flex-end;
 }
 
 @keyframes slideInFromRight {
@@ -168,28 +179,28 @@ button:hover {
     align-items: center;
     cursor: pointer;
     overflow: hidden; 
-  }
+}
   
-  .team-slot img {
+.team-slot img {
     width: 90%; 
     height: auto; 
     object-fit: cover; 
-  }
-  
-  /* Imagen del huevo */
-  .team-slot img[src$="egg.png"] {
+}
+
+/* Egg Image */
+.team-slot img[src$="egg.png"] {
     width: 60%; 
     height: auto;
-  }
-  
-  .team-container {
+}
+
+.team-container {
     display: flex;
     gap: 1rem;
     margin: 1rem 0;
     justify-content: center;
-  }
-  
-  .team-slot {
+}
+
+.team-slot {
     width: 150px;
     height: 200px;
     border: 2px dashed #ccc;
@@ -200,32 +211,159 @@ button:hover {
     background-color: #f9f9f9;
     position: relative;
     border-radius: 20px;
-  }
-  
-  .team-slot.filled {
+}
+
+.team-slot.filled {
     border: 2px solid #007bff;
     background-color: #e6f7ff;
-  }
-  
-  .team-slot.empty .egg-image {
+}
+
+.team-slot.empty .egg-image {
     width: 100px;
     height: auto;
     opacity: 0.7;
-  }
-  
-  .team-slot.empty:hover {
+}
+
+.team-slot.empty:hover {
     border-color: #28a745;
-  }
-  .team-management{
+}
+
+.team-management{
     text-align: right;
-  }
-  input{
+}
+
+input{
     margin-right: 1%;
     padding: 10px;
-  }
-  
-  
-  
+}
+
+.saved-teams-container {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: center; /* Center the text inside the elements */
+    padding: 20px;
+    background-color: #a0a0a0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.saved-teams-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.saved-teams-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.saved-team-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.saved-team-item button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.saved-team-item button:hover {
+    background-color: #218838;
+}
+
+.saved-team-item button + button {
+    background-color: #dc3545;
+    margin-left: 10px;
+}
+
+.saved-team-item button + button:hover {
+    background-color: #c82333;
+}
+
+.saved-teams-container p {
+    font-size: 1.2rem;
+    color: #d1d1d1;
+}
+
+h3{
+    color: rgb(255, 255, 255);
+}
+
+li{
+    color: black;
+}
+
+.fill{
+    margin-right: 1%;
+}
+
+/*=========== Responsive Design (only for mobile and tablet) ===========*/
+@media (max-width: 1800px) {
+    .digimons-container-3 {
+        grid-template-columns: repeat(12, 1fr); 
+    }
+}
+@media (max-width: 1500px) {
+    .digimons-container-3 {
+        grid-template-columns: repeat(10, 1fr); 
+    }
+}
+@media (max-width: 1300px) {
+    .digimons-container-3 {
+        grid-template-columns: repeat(8, 1fr); 
+    }
+}
+@media (max-width: 1050px) {
+    .digimons-container-3 {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+    .filter-team{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .team-general {
+        width: 100%;
+    }
+    .team-management{
+        text-align: center;
+    }
+}
+/* For mobile */
+@media (max-width: 600px) {
+    .team-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .digimons-container-3 {
+        grid-template-columns: repeat(2, 1fr); /* 4 columns */
+    }
+
+    .team-container, .team-slot {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .page-content-3 {
+        padding-bottom: 5vh;
+    }
+}
+
 
 
 

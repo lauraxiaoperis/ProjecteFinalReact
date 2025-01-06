@@ -17,7 +17,7 @@
 #digimon-card {
     display: flex;
     flex-wrap: wrap;
-    background: #0a1428e7;
+    background: #0a1428f8;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     overflow: hidden;
