@@ -1,11 +1,3 @@
-.page-content-2{
-    min-height: 100vh;
-    background-image: url('./images/wallpaper5.png'); 
-    background-size: cover;                         
-    background-position: center;                    
-    background-attachment: fixed;                   
-    background-repeat: no-repeat;    
-}
 .filter-container {
     background-color: #f9f9f9;
     padding: 20px;
