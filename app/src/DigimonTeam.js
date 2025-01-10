@@ -14,7 +14,7 @@ function DigimonTeam() {
   const [teamName, setTeamName] = useState(''); // The name of the team being created
   const [showSavedTeams, setShowSavedTeams] = useState(false);  // Controls visibility of saved teams
 
-  const numberDigimons = 98; // The number of Digimons to fetch from the API
+  const numberDigimons = 1000; // The number of Digimons to fetch from the API
 
   // Fetch saved teams from localStorage when the component mounts
   useEffect(() => {

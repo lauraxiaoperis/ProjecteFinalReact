@@ -7,7 +7,7 @@ import './App.css';
 
 function Search() {
   const [digimons, setDigimons] = useState([]); // Stores the Digimons returned by the API after applying filters
-  const numberDigimons = 28; // Number of Digimons to fetch per page
+  const numberDigimons = 1000; // Number of Digimons to fetch per page
   
    // Use context to get both attributes and levels
    const { filteredAttributeName, levels } = useContext(DigimonContext);
