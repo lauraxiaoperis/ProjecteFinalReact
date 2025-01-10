@@ -7,65 +7,87 @@ import './App.css';
 import './Team.css';
 
 function DigimonTeam() {
+  // State variables
   const [digimons, setDigimons] = useState([]); // List of Digimons fetched from API
   const [team, setTeam] = useState(Array(6).fill(null)); // The team of 6 Digimons (empty initially)
   const [savedTeams, setSavedTeams] = useState({}); // Object holding saved teams
   const [teamName, setTeamName] = useState(''); // The name of the team being created
   const [showSavedTeams, setShowSavedTeams] = useState(false);  // Controls visibility of saved teams
 
-  const [currentPage, setCurrentPage] = useState(0); // Current page of the general list
-  const [totalPages, setTotalPages] = useState(0); // Total pages of the general list
-
-  const numberDigimons = 98; // Number of Digimons per page
+  const numberDigimons = 98; // The number of Digimons to fetch from the API
 
   // Fetch saved teams from localStorage when the component mounts
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('savedDigimonTeams'));
-    setSavedTeams(saved || {}); // Load saved teams or initialize an empty object
+    setSavedTeams(saved || {});
   }, []);
 
   // Store the saved teams back in localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('savedDigimonTeams', JSON.stringify(savedTeams));  // Save all teams to localStorage whenever savedTeams is updated
+    localStorage.setItem('savedDigimonTeams', JSON.stringify(savedTeams));
   }, [savedTeams]);
 
-  // Fetch Digimons for the current page
-  const fetchDigimons = () => {
-    fetch(`https://digi-api.com/api/v1/digimon?pageSize=${numberDigimons}&page=${currentPage}`)
+  // Function to handle search/filtering of Digimons
+  const handleSearch = (filters) => {
+    const params = new URLSearchParams();
+    if (filters?.name) params.append('name', filters.name);
+    if (filters?.selectedAttribute) params.append('attribute', filters.selectedAttribute);
+    if (filters?.selectedLevel) params.append('level', filters.selectedLevel);
+    if (filters?.xAntibody) params.append('xAntibody', true);
+    params.append('pageSize', numberDigimons);
+
+    fetch(`https://digi-api.com/api/v1/digimon?${params.toString()}`)
       .then((response) => response.json())
-      .then((data) => {
-        setDigimons(data.content || []);
-        setTotalPages(data.pageable.totalPages || 1);
-      })
+      .then((data) => setDigimons(data.content || []))
       .catch((error) => console.error('Error fetching Digimons:', error));
   };
 
+  // Fetch Digimons when the component mounts
   useEffect(() => {
-    fetchDigimons();  // useEffect hook to load Digimons without any filters when the component is mounted
-  }, [currentPage]);
+    handleSearch();
+  }, []);
 
   // Store the current team in localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('digimonTeam', JSON.stringify(team)); // useEffect hook to save the team to localStorage whenever the team changes
+    localStorage.setItem('digimonTeam', JSON.stringify(team));
   }, [team]);
 
+  // Add a Digimon to the team (in the first available empty slot)
   const addToTeam = (digimon) => {
-    const emptyIndex = team.findIndex((slot) => slot === null);  // Find the first empty slot in the team
-    if (emptyIndex !== -1) {  // Check if there's an empty slot
-      const newTeam = [...team];  // Create a copy of the current team array
-      newTeam[emptyIndex] = digimon;  // Add the selected Digimon to the first empty slot
-      setTeam(newTeam);  // Update the team state with the new team
+    const emptyIndex = team.findIndex((slot) => slot === null);
+    if (emptyIndex !== -1) {
+      const newTeam = [...team];
+      newTeam[emptyIndex] = digimon;
+      setTeam(newTeam);
     } else {
-      alert('El equipo ya está lleno.');  // Alert if the team is already full
+      alert('El equipo ya está lleno.'); // Show alert if the team is full
     }
   };
 
+  // Remove a Digimon from the team
   const removeFromTeam = (index) => {
-    const newTeam = [...team];  // Create a copy of the current team array
-    newTeam[index] = null;  // Set the selected slot to null, effectively removing the Digimon
-    setTeam(newTeam);  // Update the team state with the modified team
+    const newTeam = [...team];
+    newTeam[index] = null;
+    setTeam(newTeam);
   };
 
+  // Fill the team with random Digimons (in empty slots)
+  const fillTeamWithRandom = () => {
+    const availableSlots = team.filter((slot) => slot === null).length;
+    const randomDigimons = [...digimons].sort(() => 0.5 - Math.random());
+    const newTeam = [...team];
+
+    let index = 0;
+    for (let i = 0; i < availableSlots && index < randomDigimons.length; i++) {
+      const emptyIndex = newTeam.findIndex((slot) => slot === null);
+      newTeam[emptyIndex] = randomDigimons[index];
+      index++;
+    }
+
+    setTeam(newTeam);
+  };
+
+  // Save the team with a name
   const saveTeam = () => {
     if (!teamName) {
       alert('Please enter a name for your team.');
@@ -80,6 +102,7 @@ function DigimonTeam() {
     alert('Team saved successfully!');
   };
 
+  // Load a saved team by name
   const loadTeam = (name) => {
     const selectedTeam = savedTeams[name];
     if (selectedTeam) {
@@ -89,37 +112,12 @@ function DigimonTeam() {
     }
   };
 
+  // Delete a saved team by name
   const deleteTeam = (teamName) => {
     const updatedTeams = { ...savedTeams };
-    delete updatedTeams[teamName];  // Remove the team with the given name
-    setSavedTeams(updatedTeams);  // Update the state
+    delete updatedTeams[teamName];
+    setSavedTeams(updatedTeams);
     localStorage.setItem('savedTeams', JSON.stringify(updatedTeams));
-  };
-
-  const goToPage = (pageNumber) => {
-    if (pageNumber >= 0 && pageNumber < totalPages) {
-      setCurrentPage(pageNumber);
-    }
-  };
-
-  const renderPageButtons = () => {
-    let pages = [];
-    const leftBound = Math.max(currentPage - 2, 0);
-    const rightBound = Math.min(currentPage + 2, totalPages - 1);
-
-    for (let i = leftBound; i <= rightBound; i++) {
-      pages.push(i);
-    }
-
-    return pages.map((page) => (
-      <button 
-        key={page}
-        onClick={() => goToPage(page)} 
-        className={page === currentPage ? 'active' : ''}
-      >
-        {page + 1}
-      </button>
-    ));
   };
 
   return (
@@ -128,20 +126,24 @@ function DigimonTeam() {
         <h2 className="title-team-2">CREATE YOUR OWN DIGIMON TEAM</h2>
       </div>
       <div className='filter-team team'>
-        <FilterBar onSearch={fetchDigimons} />  {/* FilterBar to filter Digimons */}
+        {/* Filter bar for searching Digimons */}
+        <FilterBar onSearch={handleSearch} />
 
         <div className='team-general'>
           <div className='team-management'>
+            {/* Input for team name */}
             <input
               type="text"
               value={teamName}
               onChange={(e) => setTeamName(e.target.value)}
               placeholder="Enter team name"
             />
+            {/* Button to save the team */}
             <button onClick={saveTeam}>Save Team</button>
           </div>
 
           <div className="team-container">
+            {/* Render the Digimon team */}
             {team.map((digimon, index) => (
               <div
                 key={index}
@@ -162,15 +164,18 @@ function DigimonTeam() {
             ))}
           </div>
 
-          <button className='fill' onClick={() => {}} disabled={team.every((slot) => slot !== null)}>
+          {/* Button to fill the team with random Digimons */}
+          <button className='fill' onClick={fillTeamWithRandom} disabled={team.every((slot) => slot !== null)}>
             Fill Team with Random Digimons
           </button>
 
-          <button onClick={() => setShowSavedTeams((prevState) => !prevState)}>
+          {/* Button to toggle visibility of saved teams */}
+          <button onClick={() => setShowSavedTeams(prevState => !prevState)}>
             {showSavedTeams ? 'Hide my teams' : 'View my teams'}
           </button>
         </div>
       </div>
+      {/* Conditionally render the saved teams */}
       {showSavedTeams && (
         <div className="saved-teams-container">
           <h3>SAVED TEAMS</h3>
@@ -179,6 +184,7 @@ function DigimonTeam() {
               {Object.keys(savedTeams).map((name) => (
                 <li key={name} className="saved-team-item">
                   <span className="team-name">{name}</span>
+                  {/* Load or delete saved teams */}
                   <div className="buttons-container">
                     <button onClick={() => loadTeam(name)} className="load-btn">
                       Load
@@ -195,8 +201,8 @@ function DigimonTeam() {
           )}
         </div>
       )}
-
       <div className="digimons-container-3">
+        {/* Render Digimons from the API */}
         {digimons.length > 0 ? (
           digimons.map((digimon) => (
             <div className='digimon-card-3' key={digimon.id} onClick={() => addToTeam(digimon)}>
@@ -206,12 +212,6 @@ function DigimonTeam() {
         ) : (
           <p>No Digimons found with the selected filters.</p>
         )}
-      </div>
-
-      <div className="pagination">
-        <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 0}>Previous</button>
-        {renderPageButtons()}
-        <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages - 1}>Next</button>
       </div>
     </div>
   );
