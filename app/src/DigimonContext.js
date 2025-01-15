@@ -1,55 +1,55 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-// Crear un Contexto llamado DigimonContext
+// Create a Context named DigimonContext
 const DigimonContext = createContext();
 
-// Este componente 'DigimonProvider' envolverá a otros componentes 
-// para que puedan acceder al contexto
+// This 'DigimonProvider' component will wrap other components
+// so they can access the context
 export const DigimonProvider = ({ children }) => {
-  const [filteredAttributeName, setFilteredAttributeName] = useState([]); // Estado para almacenar los nombres de los atributos
-  const [levels, setLevels] = useState([]); // Estado para almacenar los niveles
+  const [filteredAttributeName, setFilteredAttributeName] = useState([]); // State to store attribute names
+  const [levels, setLevels] = useState([]); // State to store levels
 
   const apiUrls = {
-    attribute: 'https://digi-api.com/api/v1/attribute', // URL para obtener los atributos de Digimon
-    level: 'https://digi-api.com/api/v1/level' // URL para obtener los niveles de Digimon
+    attribute: 'https://digi-api.com/api/v1/attribute', // URL to fetch Digimon attributes
+    level: 'https://digi-api.com/api/v1/level' // URL to fetch Digimon levels
   };
 
-  // Este efecto obtiene los atributos al cargar el componente
+  // This effect fetches attributes when the component loads
   useEffect(() => {
-    fetch(apiUrls.attribute) // Hacemos la petición a la API
-      .then((response) => response.json()) // Convertimos la respuesta a JSON
+    fetch(apiUrls.attribute) // Make the API request
+      .then((response) => response.json()) // Convert the response to JSON
       .then((data) => {
         if (data.content && data.content.fields) {
-          // Si hay atributos, extraemos los nombres
+          // If attributes are available, extract the names
           const attributeNames = data.content.fields.map((field) => field.name);
-          setFilteredAttributeName(attributeNames); // Guardamos los nombres en el estado
+          setFilteredAttributeName(attributeNames); // Save the names in the state
         }
       })
       .catch((error) => {
-        console.error('Error fetching Digimons attributes:', error); // Si hay error, lo mostramos
+        console.error('Error fetching Digimons attributes:', error); // Log errors if any
       });
   }, []);
 
-  // Este efecto obtiene los niveles al cargar el componente
+  // This effect fetches levels when the component loads
   useEffect(() => {
-    fetch(apiUrls.level) // Hacemos la petición a la API para los niveles
+    fetch(apiUrls.level) // Make the API request for levels
       .then((response) => response.json())
       .then((data) => {
         if (data.content && data.content.fields) {
-          // Si hay niveles, extraemos los nombres
+          // If levels are available, extract the names
           const levelNames = data.content.fields.map((field) => field.name);
-          setLevels(levelNames); // Guardamos los nombres en el estado
+          setLevels(levelNames); // Save the names in the state
         }
       })
       .catch((error) => {
-        console.error('Error fetching levels:', error); // Si hay error, lo mostramos
+        console.error('Error fetching levels:', error); // Log errors if any
       });
   }, []);
 
   return (
-    // Proveemos (compartimos) el estado de los atributos y niveles para que otros componentes los usen
+    // Provide (share) the state of attributes and levels so other components can use them
     <DigimonContext.Provider value={{ filteredAttributeName, levels }}>
-      {children} {/* Todos los componentes hijos pueden acceder al contexto */}
+      {children} {/* All child components can access the context */}
     </DigimonContext.Provider>
   );
 };

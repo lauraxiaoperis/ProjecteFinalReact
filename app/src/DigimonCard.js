@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'; // Importa los estilos
+import './App.css'; // Import styles
 
 function DigimonCard({ title, imageUrl, additionalClass }) {
     return (
@@ -11,4 +11,5 @@ function DigimonCard({ title, imageUrl, additionalClass }) {
 }
 
 export default DigimonCard;
+
 

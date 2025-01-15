@@ -14,12 +14,12 @@ function Search() {
 
  
   /**
-   * Function handleSearch: Fetches Digimons based on the filter values.
-   * @param {Object} filters - Object containing filter parameters:
-   *   - name: Filter by name
-   *   - selectedAttribute: Filter by attribute
-   *   - xAntibody: Filter by xAntibody
-   *   - selectedLevel: Filter by level
+    Function handleSearch: Fetches Digimons based on the filter values.
+     @param {Object} filters - Object containing filter parameters:
+      - name: Filter by name
+      - selectedAttribute: Filter by attribute
+      - xAntibody: Filter by xAntibody
+      - selectedLevel: Filter by level
    */
   const handleSearch = (filters) => {
 

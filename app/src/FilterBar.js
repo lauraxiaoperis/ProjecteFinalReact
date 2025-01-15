@@ -3,11 +3,8 @@ import DigimonContext from './DigimonContext';
 import './App.css';
 import './FilterBar.css';
 
-/**
- * FilterBar component - reusable filter bar for searching Digimons.
- * Props:
- *   - onSearch: Function to handle search based on filter values.
- */
+/*FilterBar component is a reusable filter bar for searching Digimons.
+    onSearch is the function that handles search based on filter values.*/
 function FilterBar({ onSearch }) {
     // State for filters
     const [name, setName] = useState(''); // Stores the name entered by the user
@@ -18,11 +15,10 @@ function FilterBar({ onSearch }) {
     // Use context to get both attributes and levels
     const { filteredAttributeName, levels } = useContext(DigimonContext);
 
-    /**
-     * handleSearch - Invokes the onSearch function with current filter values.
-     * This function sends the current filter state back to the parent component.
-     * (the parent is Search.js or DigimonTeam.js)
-     */
+    /*handleSearch invokes the onSearch function with current filter values.
+     This function sends the current filter state back to the parent component.
+     (the parent is Search.js or DigimonTeam.js) */
+    
     const handleSearch = () => {
         onSearch({ name, selectedAttribute, xAntibody, selectedLevel });
     };
