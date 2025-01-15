@@ -238,9 +238,9 @@ input{
 }
 
 .saved-teams-container {
-    width: 80%; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the container horizontally */
-    text-align: center; /* Center the text inside the elements */
+    width: 80%; 
+    margin: 0 auto; 
+    text-align: center; 
     padding: 20px;
     background-color: #a0a0a0;
     border-radius: 10px;
